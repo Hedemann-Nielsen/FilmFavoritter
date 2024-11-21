@@ -42,7 +42,7 @@ export const News = () => {
 	console.log(moviesData[0]);
 
 	return (
-		<section className="bg-BaggroundPrim w-full rounded-lg">
+		<section className=" bg-BaggroundPrim w-full rounded-lg">
 			<h1 className="text-center">Nyeste film</h1>
 			<section className="p-10">
 				<div className=" grid grid-cols-2 gap-1.5 lg:grid-cols-5 xl:grid-cols-7">
@@ -52,7 +52,7 @@ export const News = () => {
 							key={index}
 							src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
 							alt={movie.title}
-							className=" object-cover rounded-lg  h-[201.5px]"
+							className=" object-cover rounded-lg  h-[205px]"
 						/>
 					))}
 					<div className="grid grid-cols-1 grid-rows-2 gap-1.5">
@@ -70,7 +70,7 @@ export const News = () => {
 							key={index}
 							src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
 							alt={movie.title}
-							className=" object-cover rounded-lg h-[201.5px]"
+							className=" object-cover rounded-lg  h-[205px]"
 						/>
 					))}
 					<div className="grid grid-cols-1 grid-rows-2 gap-1.5">
@@ -89,7 +89,7 @@ export const News = () => {
 							key={index}
 							src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
 							alt={movie.title}
-							className=" object-cover rounded-lg h-[201.5px]"
+							className=" object-cover rounded-lg  h-[205px]"
 						/>
 					))}
 					<div className="grid grid-cols-1 grid-rows-2 gap-1.5">
@@ -108,7 +108,7 @@ export const News = () => {
 							key={index}
 							src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
 							alt={movie.title}
-							className=" object-cover rounded-lg h-[201.5px]"
+							className=" object-cover rounded-lg  h-[205px]"
 						/>
 					))}
 				</div>

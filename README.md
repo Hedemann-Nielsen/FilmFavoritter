@@ -6,7 +6,7 @@ For at køre denne Applikation skal du følge denne installationsguide
 
 ## Trin 1: Klone projektet fra GitHub
 Åben VS Code og tryk på clone github repository
-indset dette link: [Film-favoritter](https://github.com/Hedemann-Nielsen/Film-Favoritter)
+indset dette link: [FilmFavoritter](https://github.com/Hedemann-Nielsen/FilmFavoritter)
 
 Naviger til den mappe, hvor du vil gemme projektet. Når projektet er indlæst trykker du på knappen Open når du bliver adspurgt.
 

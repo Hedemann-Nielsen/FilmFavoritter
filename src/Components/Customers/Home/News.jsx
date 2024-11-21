@@ -39,7 +39,6 @@ export const News = () => {
 		// Showing eror massage if any error
 		return <p>Error: {error}</p>;
 	}
-	console.log(moviesData[0]);
 
 	return (
 		<section className=" bg-BaggroundPrim w-full rounded-lg">
@@ -70,7 +69,7 @@ export const News = () => {
 							key={index}
 							src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
 							alt={movie.title}
-							className=" object-cover rounded-lg  h-[205px]"
+							className="hidden lg:block 2xl:block object-cover rounded-lg  h-[205px]"
 						/>
 					))}
 					<div className="grid grid-cols-1 grid-rows-2 gap-1.5">
@@ -80,7 +79,7 @@ export const News = () => {
 								key={index}
 								src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
 								alt={movie.title}
-								className=" object-cover rounded-lg h-[100px]"
+								className="hidden lg:block 2xl:block object-cover rounded-lg h-[100px] "
 							/>
 						))}
 					</div>
@@ -89,17 +88,16 @@ export const News = () => {
 							key={index}
 							src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
 							alt={movie.title}
-							className=" object-cover rounded-lg  h-[205px]"
+							className="hidden lg:block 2xl:block  object-cover rounded-lg  h-[205px] sm:hidden"
 						/>
 					))}
 					<div className="grid grid-cols-1 grid-rows-2 gap-1.5">
-						{" "}
 						{moviesData.slice(7, 9).map((movie, index) => (
 							<img
 								key={index}
 								src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
 								alt={movie.title}
-								className=" object-cover rounded-lg h-[100px]"
+								className="hidden xl:block object-cover rounded-lg h-[100px] sm:hidden"
 							/>
 						))}
 					</div>
@@ -108,7 +106,7 @@ export const News = () => {
 							key={index}
 							src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
 							alt={movie.title}
-							className=" object-cover rounded-lg  h-[205px]"
+							className="hidden xl:block object-cover rounded-lg  h-[205px] sm:hidden"
 						/>
 					))}
 				</div>

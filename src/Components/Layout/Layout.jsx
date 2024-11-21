@@ -14,7 +14,7 @@ export const Layout = () => {
 			<ScrollToTop />
 			{/* tjekker om viduetsstørrelse er under 768px, hvis den er det vises mobil	header, hvis den er over vises desktop header */}
 			{width <= 768 ? <MobilHeader /> : <Header />}
-			<main className="bg-gradient-to-b from-BaggroundPrim to-BaggroundSec h-screen px-10">
+			<main className="bg-gradient-to-b from-BaggroundPrim to-BaggroundSec  px-10">
 				<Outlet />
 			</main>
 

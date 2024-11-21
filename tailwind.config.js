@@ -2,17 +2,12 @@
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
-		screens: {
-			sm: "768px",
-			lg: "1024px",
-			xl: "1440px",
-		},
 		extend: {
 			colors: {
 				BaggroundPrim: "#1E1B33",
 				BaggroundSec: "#302B50",
 				subtleLight: "#EAEAEA",
-				subtleDark: "#61646",
+				subtleDark: "#61646B",
 				title: "#FFFFFF",
 				AccPrim: "#55EC20",
 				accSec: "#8FFF75",

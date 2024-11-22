@@ -21,13 +21,8 @@ export const Home = () => {
 
 	// Find Thriller-genre
 	const genreThriller = genreList?.find((genre) => genre.name === "Thriller");
-	console.log(genreThriller);
-
 	const genreThrillerId = genreThriller?.id;
-	console.log(genreThrillerId);
-
 	const genreThrillerName = genreThriller?.name;
-	console.log(genreThrillerName);
 
 	// Find War-genre
 	const genreWar = genreList?.find((genre) => genre.name === "War");
@@ -36,6 +31,7 @@ export const Home = () => {
 
 	// Find Romance-genre
 	const genreRomance = genreList?.find((genre) => genre.name === "Romance");
+
 	const genreRomanceId = genreRomance?.id;
 	const genreRomanceName = genreRomance?.name;
 
@@ -68,19 +64,19 @@ export const Home = () => {
 	return (
 		<>
 			<News />
-			<GenreSection GenreId={genreActionId} title={genreActionName} />
-			<GenreSection GenreId={genreComedyId} title={genreComedyName} />
-			<GenreSection GenreId={genreThrillerId} title={genreThrillerName} />
+			<GenreSection genreId={genreActionId} title={genreActionName} />
+			<GenreSection genreId={genreComedyId} title={genreComedyName} />
+			<GenreSection genreId={genreThrillerId} title={genreThrillerName} />
 			<div className="flex justify-center">
 				<KeyFeatures />
 			</div>
-			<GenreSection GenreId={genreWarId} title={genreWarName} />
-			<GenreSection GenreId={genreRomanceId} title={genreRomanceName} />
+			<GenreSection genreId={genreWarId} title={genreWarName} />
+			<GenreSection genreId={genreRomanceId} title={genreRomanceName} />
 			<AllGenresSection />
-			<GenreSection GenreId={genreDramaId} title={genreDramaName} />
-			<GenreSection GenreId={genreCrimeId} title={genreCrimeName} />
-			<GenreSection GenreId={genreDocumentaryId} title={genreDocumentaryName} />
-			<GenreSection GenreId={genreHorrorId} title={genreHorrorName} />
+			<GenreSection genreId={genreDramaId} title={genreDramaName} />
+			<GenreSection genreId={genreCrimeId} title={genreCrimeName} />
+			<GenreSection genreId={genreDocumentaryId} title={genreDocumentaryName} />
+			<GenreSection genreId={genreHorrorId} title={genreHorrorName} />
 		</>
 	);
 };

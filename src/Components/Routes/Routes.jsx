@@ -21,15 +21,15 @@ export const routes = createBrowserRouter([
 				element: <HomePage />,
 			},
 			{
-				path: "/genre",
+				path: "/genre/:genre_id",
 				element: <GenrePage />,
 			},
 			{
-				path: "/movie/:id",
+				path: "/movie/:movie_id",
 				element: <MoviePage />,
 			},
 			{
-				path: "/user/:user-name",
+				path: "/user/:user_name",
 				element: <UserPage />,
 			},
 			{

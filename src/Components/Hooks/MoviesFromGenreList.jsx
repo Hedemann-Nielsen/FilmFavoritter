@@ -1,23 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
 export const useMoviesFromGenreList = (genreId) => {
-	const [sinlgeGenreList, setSingleGenreList] = useState([]);
-	const [singleGenreTotal, setSingleGenreTotal] = useState([]);
+	// States for movie list, total data, loading state, and error handling
+	const [singleGenreList, setSingleGenreList] = useState([]);
+	const [singleGenreTotal, setSingleGenreTotal] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const [currentPage, setCurrentPage] = useState(1);
 
-	useEffect(() => {
-		// Forhindre kald, hvis genreId ikke er defineret
-		if (!genreId) return;
+	// Fetch movies for a specific page and genre
+	const fetchMoviesFromGenreList = useCallback(
+		async (page = 1) => {
+			if (!genreId) return;
 
-		const fetchMoviesFromGenreList = async () => {
 			setLoading(true);
-			setError(null); // Nulstil fejl før nyt API-kald
+			setError(null);
 			try {
 				const response = await axios.get(
-					`https://api.themoviedb.org/3/movie/${genreId}/similar?language=en-US&page=1`,
-					// `https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}`,
+					`https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&page=${page}`,
 					{
 						headers: {
 							accept: "application/json",
@@ -26,19 +27,49 @@ export const useMoviesFromGenreList = (genreId) => {
 						},
 					}
 				);
+
+				// Remove duplicates and update movie list and total data
+				const filteredMovies = response.data.results.filter(
+					(movie, index, self) =>
+						index === self.findIndex((m) => m.id === movie.id)
+				);
+				setSingleGenreList((prevMovies) => [...prevMovies, ...filteredMovies]);
 				setSingleGenreTotal(response.data);
-				setSingleGenreList(response.data.results);
-				// console.log(singleGenreTotal, "singleGenreTotals");
-				// console.log(sinlgeGenreList, "singleGenreTotals");
 			} catch (error) {
 				setError(error.message);
 			} finally {
 				setLoading(false);
 			}
-		};
+		},
+		[genreId]
+	);
 
-		fetchMoviesFromGenreList();
-	}, [genreId]); // Tilføj genreId som afhængighed
+	// Fetch the first page of movies when genreId changes
+	useEffect(() => {
+		setSingleGenreList([]);
+		setCurrentPage(1);
+		fetchMoviesFromGenreList(1);
+	}, [genreId, fetchMoviesFromGenreList]);
 
-	return { sinlgeGenreList, singleGenreTotal, loading, error };
+	// Load the next page of movies
+	const loadMore = () => {
+		if (
+			singleGenreTotal?.total_pages &&
+			currentPage < singleGenreTotal.total_pages
+		) {
+			const nextPage = currentPage + 1;
+			setCurrentPage(nextPage);
+			fetchMoviesFromGenreList(nextPage);
+		}
+	};
+
+	// Return necessary data and functions
+	return {
+		singleGenreList,
+		singleGenreTotal,
+		loading,
+		error,
+		loadMore,
+		hasMore: currentPage < singleGenreTotal?.total_pages,
+	};
 };

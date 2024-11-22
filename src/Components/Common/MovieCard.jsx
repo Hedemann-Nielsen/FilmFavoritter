@@ -5,7 +5,7 @@ import { GoHeartFill } from "react-icons/go";
 
 export const MovieCard = ({ sinlgeGenreList }) => {
 	const scrollContainerRef = useRef(null);
-	const [scrollBarWidth, setScrollBarWidth] = useState(10); // Set fixed width to 10% of the bar
+	const [scrollBarWidth, setScrollBarWidth] = useState(10);
 	const [scrollPosition, setScrollPosition] = useState(0);
 
 	useEffect(() => {

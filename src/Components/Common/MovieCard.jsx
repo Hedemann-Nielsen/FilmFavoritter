@@ -3,7 +3,7 @@ import { formatDateShortMonth } from "../Utils/FormatDate";
 import { ProgressIndicator } from "../Common/ProgressIndicator/ProgressIndicator";
 import { GoHeartFill } from "react-icons/go";
 
-export const MovieCard = ({ genreList }) => {
+export const MovieCard = ({ sinlgeGenreList }) => {
 	const scrollContainerRef = useRef(null);
 	const [scrollBarWidth, setScrollBarWidth] = useState(10); // Set fixed width to 10% of the bar
 	const [scrollPosition, setScrollPosition] = useState(0);
@@ -33,12 +33,10 @@ export const MovieCard = ({ genreList }) => {
 				ref={scrollContainerRef}>
 				<div className="flex xl:hidden w-full">
 					{/* movie items */}
-					{genreList &&
-						genreList.slice(0, 10).map((movie, index) => (
-							<>
-								<figure
-									key={index}
-									className="relative mx-3 shadow-md shadow-BaggroundPrim min-w-[200px]">
+					{sinlgeGenreList &&
+						sinlgeGenreList.slice(0, 10).map((movie, index) => (
+							<div key={index}>
+								<figure className="relative mx-3 shadow-md shadow-BaggroundPrim min-w-[200px]">
 									<img
 										src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 										alt={movie.title}
@@ -58,7 +56,7 @@ export const MovieCard = ({ genreList }) => {
 										<ProgressIndicator index={movie.vote_average} />
 									</div>
 								</figure>
-							</>
+							</div>
 						))}
 				</div>
 			</div>
@@ -76,8 +74,8 @@ export const MovieCard = ({ genreList }) => {
 			{/* Flex container for desktop */}
 			<div className="hidden xl:flex flex-row ">
 				{/* movie items */}
-				{genreList &&
-					genreList.slice(0, 10).map((movie, index) => (
+				{sinlgeGenreList &&
+					sinlgeGenreList.slice(0, 10).map((movie, index) => (
 						<figure
 							key={index}
 							className="relative mx-3 shadow-xl shadow-BaggroundPrim group cursor-pointer">

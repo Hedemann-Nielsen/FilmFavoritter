@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const useGenreList = (genreId) => {
-	const [genreList, setGenreList] = useState([]);
-	const [loading, setLoading] = useState(true);
+export const useMoviesFromGenreList = (genreId) => {
+	const [sinlgeGenreList, setSingleGenreList] = useState([]);
+	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		const fetchGenreList = async () => {
+		// Forhindre kald, hvis genreId ikke er defineret
+		if (!genreId) return;
+
+		const fetchMoviesFromGenreList = async () => {
+			setLoading(true);
+			setError(null); // Nulstil fejl før nyt API-kald
 			try {
 				const response = await axios.get(
 					`https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}`,
-
 					{
 						headers: {
 							accept: "application/json",
@@ -21,7 +25,7 @@ export const useGenreList = (genreId) => {
 					}
 				);
 
-				setGenreList(response.data.results);
+				setSingleGenreList(response.data.results);
 			} catch (error) {
 				setError(error.message);
 			} finally {
@@ -29,8 +33,8 @@ export const useGenreList = (genreId) => {
 			}
 		};
 
-		fetchGenreList();
-	}, []);
+		fetchMoviesFromGenreList();
+	}, [genreId]); // Tilføj genreId som afhængighed
 
-	return { genreList, loading, error };
+	return { sinlgeGenreList, loading, error };
 };

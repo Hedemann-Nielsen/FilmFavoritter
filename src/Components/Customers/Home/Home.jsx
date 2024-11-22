@@ -1,4 +1,5 @@
 import { useGenreList } from "../../Hooks/GenreMovieList";
+import { AllGenresSection } from "./AllGenresSection";
 
 import { GenreSection } from "./GenreSection";
 import { KeyFeatures } from "./KeyFeatures";
@@ -7,7 +8,6 @@ import { News } from "./News";
 export const Home = () => {
 	// Get genreliste
 	const { genreList, errorGengre, loadingGenre } = useGenreList();
-	console.log(genreList);
 
 	// Find Action-genre
 	const genreAction = genreList?.find((genre) => genre.name === "Action");
@@ -21,8 +21,13 @@ export const Home = () => {
 
 	// Find Thriller-genre
 	const genreThriller = genreList?.find((genre) => genre.name === "Thriller");
+	console.log(genreThriller);
+
 	const genreThrillerId = genreThriller?.id;
+	console.log(genreThrillerId);
+
 	const genreThrillerName = genreThriller?.name;
+	console.log(genreThrillerName);
 
 	// Find War-genre
 	const genreWar = genreList?.find((genre) => genre.name === "War");
@@ -33,6 +38,29 @@ export const Home = () => {
 	const genreRomance = genreList?.find((genre) => genre.name === "Romance");
 	const genreRomanceId = genreRomance?.id;
 	const genreRomanceName = genreRomance?.name;
+
+	// Find Drama-genre
+	const genreDrama = genreList?.find((genre) => genre.name === "Drama");
+	const genreDramaId = genreDrama?.id;
+	const genreDramaName = genreDrama?.name;
+
+	// Find Crime-genre
+	const genreCrime = genreList?.find((genre) => genre.name === "Crime");
+	const genreCrimeId = genreCrime?.id;
+	const genreCrimeName = genreCrime?.name;
+
+	// Find Documentary-genre
+	const genreDocumentary = genreList?.find(
+		(genre) => genre.name === "Documentary"
+	);
+	const genreDocumentaryId = genreDocumentary?.id;
+	const genreDocumentaryName = genreDocumentary?.name;
+
+	// Find Horror-genre
+	const genreHorror = genreList?.find((genre) => genre.name === "Horror");
+	const genreHorrorId = genreHorror?.id;
+	const genreHorrorName = genreHorror?.name;
+
 	// Loading and error states
 	if (loadingGenre) return <p>Loading genres...</p>;
 	if (errorGengre) return <p>Error loading genres: {errorGengre}</p>;
@@ -40,14 +68,19 @@ export const Home = () => {
 	return (
 		<>
 			<News />
-			<GenreSection gereId={genreActionId} title={genreActionName} />
-			<GenreSection gereId={genreComedyId} title={genreComedyName} />
-			<GenreSection gereId={genreThrillerId} title={genreThrillerName} />
+			<GenreSection GenreId={genreActionId} title={genreActionName} />
+			<GenreSection GenreId={genreComedyId} title={genreComedyName} />
+			<GenreSection GenreId={genreThrillerId} title={genreThrillerName} />
 			<div className="flex justify-center">
 				<KeyFeatures />
 			</div>
-			<GenreSection gereId={genreWarId} title={genreWarName} />
-			<GenreSection gereId={genreRomanceId} title={genreRomanceName} />
+			<GenreSection GenreId={genreWarId} title={genreWarName} />
+			<GenreSection GenreId={genreRomanceId} title={genreRomanceName} />
+			<AllGenresSection />
+			<GenreSection GenreId={genreDramaId} title={genreDramaName} />
+			<GenreSection GenreId={genreCrimeId} title={genreCrimeName} />
+			<GenreSection GenreId={genreDocumentaryId} title={genreDocumentaryName} />
+			<GenreSection GenreId={genreHorrorId} title={genreHorrorName} />
 		</>
 	);
 };

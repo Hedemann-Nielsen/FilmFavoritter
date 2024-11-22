@@ -9,6 +9,8 @@ export const MovieCard = ({ sinlgeGenreList }) => {
 	const [scrollPosition, setScrollPosition] = useState(0);
 
 	useEffect(() => {
+		if (!scrollContainerRef.current) return;
+
 		const updateScrollBar = () => {
 			const container = scrollContainerRef.current;
 			const scrollWidth = container.scrollWidth;
@@ -21,7 +23,8 @@ export const MovieCard = ({ sinlgeGenreList }) => {
 
 		const container = scrollContainerRef.current;
 		container.addEventListener("scroll", updateScrollBar);
-		updateScrollBar(); // Initial call to set correct sizes
+		// Initial call to set correct sizes
+		updateScrollBar();
 		return () => container.removeEventListener("scroll", updateScrollBar);
 	}, [scrollBarWidth]);
 
@@ -29,7 +32,7 @@ export const MovieCard = ({ sinlgeGenreList }) => {
 		<>
 			{/* Flex container for tablet/mobile */}
 			<div
-				className="scroll-container relative w-full h-[460px] overflow-x-auto "
+				className="scroll-container scroll-Cardcontainer relative w-full h-[460px] overflow-x-auto "
 				ref={scrollContainerRef}>
 				<div className="flex xl:hidden w-full">
 					{/* movie items */}

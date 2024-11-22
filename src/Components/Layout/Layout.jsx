@@ -2,8 +2,8 @@ import { Outlet } from "react-router-dom";
 import { Footer } from "../Common/Footer.jsx";
 import { Header } from "../Common/Header/Header.jsx";
 import { MobilHeader } from "../Common/Header/MobilHeader.jsx";
-import { useResizeHandler } from "../Common/ResizeHandler/ResizeHandler.jsx";
-import { ScrollToTop } from "../Common/ScrollToTop/ScrollToTop.jsx";
+import { useResizeHandler } from "../Common/ResizeHandler.jsx";
+import { ScrollToTop } from "../Common/ScrollToTop.jsx";
 
 export const Layout = () => {
 	const { width } = useResizeHandler();

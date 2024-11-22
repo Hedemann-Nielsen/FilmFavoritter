@@ -1,10 +1,12 @@
+$layout-breakpoint-sm: 768px
+$layout-breakpoint-lg: 1024px
+$layout-breakpoint-xl: 1280px
 
 * 
   margin: 0
   padding: 0
   box-sizing: border-box
   scroll-behavior: smooth
-
 
 
 h1
@@ -42,3 +44,23 @@ button
 
   &:active
     transform: translateY(2px)
+
+
+/* Skjul standard scrollbar */
+/* Chrome, Safari og Opera */
+.scroll-container::-webkit-scrollbar 
+  display: none
+
+.scroll-container 
+  /* IE og Edge */
+  -ms-overflow-style: none
+  /* Firefox */
+  scrollbar-width: none
+
+@media (min-width: $layout-breakpoint-sm) and (min-width: $layout-breakpoint-lg)
+  .scroll-container
+    display: block
+
+@media (min-width: $layout-breakpoint-xl) 
+  .scroll-container
+    display: none

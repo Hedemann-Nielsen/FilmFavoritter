@@ -15,6 +15,8 @@ export default {
 				shadow: "#302B50",
 				CTA: "#FFC837",
 				hl: "#FF9100",
+				hlGradient:
+					"linear-gradient(180deg, rgba(255, 200, 55, 1) 0%, rgba(255, 223, 112, 1) 100%)",
 				fav: "#FF5E57",
 			},
 			fontFamily: {

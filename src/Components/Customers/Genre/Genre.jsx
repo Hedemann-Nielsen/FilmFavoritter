@@ -8,8 +8,14 @@ export const Genre = () => {
 	const { genre_id } = useParams();
 	const genreId = genre_id;
 	const { genreList } = useGenreList();
-	const { singleGenreList, error, loading, loadMore, hasMore } =
-		useMoviesFromGenreList(genreId || null);
+	const {
+		singleGenreList,
+		singleGenreTotal,
+		error,
+		loading,
+		loadMore,
+		hasMore,
+	} = useMoviesFromGenreList(genreId || null);
 	const [backdropPath, setBackdropPath] = useState("");
 
 	// Find genre title based on genreId
@@ -30,9 +36,12 @@ export const Genre = () => {
 	return (
 		<section>
 			<div className="relative w-full">
-				<h1 className="absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-title text-[72px] uppercase tracking-widest">
-					{genreTitle}
-				</h1>
+				<div className="flex items-baseline mb-3">
+					{/* title for genre */}
+					<h1 className="absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-title text-[72px] uppercase tracking-widest">
+						{genreTitle}
+					</h1>
+				</div>
 				<div className="absolute inset-0 bg-[#1d1e2cc7] opacity-80 rounded-lg"></div>
 				<img
 					src={`https://image.tmdb.org/t/p/w500${backdropPath}`}
@@ -40,7 +49,9 @@ export const Genre = () => {
 					className="object-cover w-full h-96 rounded-lg"
 				/>
 			</div>
-
+			<h3 className="text-subtleDark my-3">
+				{singleGenreTotal?.total_results || 0} films i {genreTitle} genre
+			</h3>
 			<MovieCard
 				singleGenreList={singleGenreList}
 				loadMore={loadMore}

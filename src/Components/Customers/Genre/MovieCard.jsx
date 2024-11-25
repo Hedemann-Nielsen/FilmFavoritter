@@ -54,7 +54,7 @@ export const MovieCard = ({ singleGenreList, loadMore, hasMore }) => {
 
 			{/* "Load More" button, only visible if more movies are available */}
 			{hasMore && (
-				<div className="flex justify-center mt-4">
+				<div className="flex justify-center py-4 mt-4">
 					<button onClick={handleLoadMore}>Load More</button>
 				</div>
 			)}

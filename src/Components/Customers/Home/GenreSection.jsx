@@ -18,10 +18,12 @@ export const GenreSection = ({ genreId, title }) => {
 				<div className="flex items-baseline mb-3">
 					{/* title for genre */}
 					<h1>{title}</h1>
+					{/* total numer of movies */}
 					<p className="text-subtleDark ml-3">
 						{singleGenreTotal?.total_results || 0} films
 					</p>
 				</div>
+				{/* button to more movies in genre */}
 				<button>
 					<Link to={`/genre/${genreId}`}>Vis flere</Link>
 				</button>

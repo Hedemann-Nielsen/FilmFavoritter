@@ -27,8 +27,6 @@ export const AllGenresSection = () => {
 		return () => container.removeEventListener("scroll", updateScrollBar);
 	}, [scrollBarWidth]);
 
-	useEffect(() => {}, [scrollPosition]);
-
 	if (loadingImages) return <p>Loading genres...</p>;
 	if (errorImages) return <p>Error: {errorImages}</p>;
 

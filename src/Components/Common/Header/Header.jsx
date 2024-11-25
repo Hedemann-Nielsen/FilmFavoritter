@@ -25,7 +25,7 @@ export const Header = () => {
 			</nav>
 			<div className="flex  space-x-3">
 				<button className="flex space-x-2">
-					<FaUser className=" text-BaggroundPrim" />{" "}
+					<FaUser className=" text-BaggroundPrim" />
 					<p className="text-BaggroundPrim">Login</p>
 				</button>
 				<div className="flex w-[144px] bg-[#D9D9D9] rounded-lg  space-x-2 align-middle items-center justify-center text-[#1E1B33]">

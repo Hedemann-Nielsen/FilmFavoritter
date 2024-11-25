@@ -1,4 +1,4 @@
-import { Movie } from "../Components/Customers/Movie.jsx";
+import { Movie } from "../Components/Customers/Movie/Movie.jsx";
 export const MoviePage = () => {
 	return (
 		<>

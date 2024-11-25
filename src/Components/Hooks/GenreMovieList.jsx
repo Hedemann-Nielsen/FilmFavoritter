@@ -22,6 +22,7 @@ export const useGenreList = () => {
 				);
 
 				setGenreList(response.data.genres);
+				console.log(genreList);
 			} catch (error) {
 				setErrorGenre(error.message);
 			} finally {

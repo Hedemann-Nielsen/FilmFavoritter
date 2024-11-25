@@ -1,5 +1,9 @@
-import { Genre } from "../Components/Customers/Genre.jsx";
+import { Genre } from "../Components/Customers/Genre/Genre";
 
 export const GenrePage = () => {
-	return <Genre />;
+	return (
+		<>
+			<Genre />
+		</>
+	);
 };

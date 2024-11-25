@@ -3,7 +3,7 @@ import { formatDateShortMonth } from "../Utils/FormatDate";
 import { ProgressIndicator } from "../Common/ProgressIndicator/ProgressIndicator";
 import { GoHeartFill } from "react-icons/go";
 
-export const MovieCard = ({ sinlgeGenreList }) => {
+export const MovieCard = ({ singleGenreList }) => {
 	const scrollContainerRef = useRef(null);
 	const [scrollBarWidth, setScrollBarWidth] = useState(10);
 	const [scrollPosition, setScrollPosition] = useState(0);
@@ -36,8 +36,8 @@ export const MovieCard = ({ sinlgeGenreList }) => {
 				ref={scrollContainerRef}>
 				<div className="flex xl:hidden w-full">
 					{/* movie items */}
-					{sinlgeGenreList &&
-						sinlgeGenreList.slice(0, 10).map((movie, index) => (
+					{singleGenreList &&
+						singleGenreList.slice(0, 10).map((movie, index) => (
 							<div key={index}>
 								<figure className="relative mx-3 shadow-md shadow-BaggroundPrim min-w-[200px]">
 									<img
@@ -77,8 +77,8 @@ export const MovieCard = ({ sinlgeGenreList }) => {
 			{/* Flex container for desktop */}
 			<div className="hidden xl:flex flex-row ">
 				{/* movie items */}
-				{sinlgeGenreList &&
-					sinlgeGenreList.slice(0, 10).map((movie, index) => (
+				{singleGenreList &&
+					singleGenreList.slice(0, 10).map((movie, index) => (
 						<figure
 							key={index}
 							className="relative mx-3 shadow-xl shadow-BaggroundPrim group cursor-pointer">

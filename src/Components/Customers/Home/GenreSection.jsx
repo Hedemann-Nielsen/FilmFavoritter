@@ -1,11 +1,11 @@
 import { MovieCard } from "../../Common/MovieCard";
 import { ToggleSwitch } from "../../Common/ToggleSwitch";
-import { useMoviesFromGenreList } from "../../Hooks/MoviesFromGenreList";
+import { useMoviesFromGenreList } from "../../hooks/MoviesFromGenreList";
 
-export const GenreSection = ({ GenreId, title }) => {
+export const GenreSection = ({ genreId, title }) => {
 	// Use movie hook ONLY when genreId is defined
-	const { sinlgeGenreList, singleGenreTotal, loading, error } =
-		useMoviesFromGenreList(GenreId || null);
+	const { singleGenreList, singleGenreTotal, loading, error } =
+		useMoviesFromGenreList(genreId || null);
 
 	if (loading) return <p>Loading movies...</p>;
 	if (error) return <p>Error loading movies: {error}</p>;
@@ -23,7 +23,7 @@ export const GenreSection = ({ GenreId, title }) => {
 				</div>
 				<button>Vis flere</button>
 			</div>
-			<MovieCard sinlgeGenreList={sinlgeGenreList} />
+			<MovieCard singleGenreList={singleGenreList} />
 		</section>
 	);
 };

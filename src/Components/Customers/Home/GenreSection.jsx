@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { MovieCard } from "../../Common/MovieCard";
 import { ToggleSwitch } from "../../Common/ToggleSwitch";
 import { useMoviesFromGenreList } from "../../hooks/MoviesFromGenreList";
@@ -21,7 +22,9 @@ export const GenreSection = ({ genreId, title }) => {
 						{singleGenreTotal?.total_results || 0} films
 					</p>
 				</div>
-				<button>Vis flere</button>
+				<button>
+					<Link to={`/genre/${genreId}`}>Vis flere</Link>
+				</button>
 			</div>
 			<MovieCard singleGenreList={singleGenreList} />
 		</section>

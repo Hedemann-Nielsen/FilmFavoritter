@@ -7,10 +7,13 @@ import { PrimaryDetails } from "./PrimaryDetails";
 import { CrewSection } from "./CrewSection";
 import { Actors } from "./Actors";
 import { Overview } from "./overview";
+import { useUserDetails } from "../../Hooks/User/UserDetails";
 
 export const Movie = () => {
 	const { movie_id } = useParams();
 	const movieId = movie_id;
+
+	const { userData } = useUserDetails();
 
 	//movie details from fetch
 	const { movieDetails, errorMovieDetails, loadingMovieDetails } =
@@ -48,7 +51,7 @@ export const Movie = () => {
 	return (
 		<>
 			<Backdrop backdropPath={backdropPath} />
-			<PrimaryDetails movieDetails={movieDetails} />
+			<PrimaryDetails movieDetails={movieDetails} userData={userData} />
 			<Overview movieDetails={movieDetails} />
 			<Actors actingCast={actingCast} />
 			<CrewSection

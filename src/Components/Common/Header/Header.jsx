@@ -2,7 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 
 import { FaUser } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
+import { useAuth } from "../../../Providers/AuthProvider";
 export const Header = () => {
+	const { loginData } = useAuth();
 	return (
 		<header className="bg-BaggroundPrim flex justify-between items-center px-10 py-9">
 			<Link to="/">
@@ -28,8 +30,11 @@ export const Header = () => {
 			<div className="flex  space-x-3">
 				<button className="flex space-x-2">
 					<FaUser className=" text-BaggroundPrim" />
+					{/* changes text if logged in */}
 					<Link to="/login">
-						<p className="text-BaggroundPrim">Login</p>
+						<p className="text-BaggroundPrim">
+							{loginData ? "Log ud" : "Login "}
+						</p>
 					</Link>
 				</button>
 				<div className="flex w-[144px] bg-[#D9D9D9] rounded-lg  space-x-2 align-middle items-center justify-center text-[#1E1B33]">

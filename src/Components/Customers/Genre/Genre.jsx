@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useGenreList } from "../../Hooks/GenreMovieList";
-import { useMoviesFromGenreList } from "../../hooks/MoviesFromGenreList";
+import { useGenreList } from "../../Hooks/Movies/GenreMovieList";
+import { useMoviesFromGenreList } from "../../Hooks/Movies/MoviesFromGenreList";
 import { MovieCard } from "./MovieCard";
 import { useEffect, useState } from "react";
 import { Backdrop } from "../../Common/Backdrop";

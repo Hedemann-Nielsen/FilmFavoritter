@@ -8,14 +8,15 @@ export const useGenreImages = () => {
 
 	useEffect(() => {
 		const fetchGenreImages = async () => {
+			const accessToken = import.meta.env.VITE_TMDB_API_READ_ACCESS_TOKEN;
+
 			try {
 				const genreResponse = await axios.get(
 					"https://api.themoviedb.org/3/genre/movie/list?language=en",
 					{
 						headers: {
 							accept: "application/json",
-							Authorization:
-								"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzljNTkwYmU5ZGIzYjhiNDA2NWMzNTk4NWFhYjQ5YiIsIm5iZiI6MTczMjE5MTQxMi4wNDg2MTg2LCJzdWIiOiI2NzNjODZjODc4ZjBjZDQ4OTE3MzliYzciLCJzY29wZXMiLCJhcGlfcmVhZCIsInZlcnNpb24iOjF9.RWWRaVJkTDv2ibU3w1dRMtZ52bzV7_VO8iK4STgYP2s",
+							Authorization: `Bearer ${accessToken}`,
 						},
 					}
 				);
@@ -28,8 +29,7 @@ export const useGenreImages = () => {
 							{
 								headers: {
 									accept: "application/json",
-									Authorization:
-										"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzljNTkwYmU5ZGIzYjhiNDA2NWMzNTk4NWFhYjQ5YiIsIm5iZiI6MTczMjE5MTQxMi4wNDg2MTg2LCJzdWIiOiI2NzNjODZjODc4ZjBjZDQ4OTE3MzliYzciLCJzY29wZXMiLCJhcGlfcmVhZCIsInZlcnNpb24iOjF9.RWWRaVJkTDv2ibU3w1dRMtZ52bzV7_VO8iK4STgYP2s",
+									Authorization: `Bearer ${accessToken}`,
 								},
 							}
 						);

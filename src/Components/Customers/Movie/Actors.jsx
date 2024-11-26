@@ -1,4 +1,3 @@
-import avatar from "../../../assets/Avatar.png";
 export const Actors = ({ actingCast }) => {
 	return (
 		<section className="my-7">

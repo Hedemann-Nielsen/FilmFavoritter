@@ -1,6 +1,6 @@
 import { ProgressIndicator } from "../../Common/ProgressIndicator/ProgressIndicator";
 import { formatYear } from "../../Utils/FormatDate";
-
+import { formatRunTime } from "../../Utils/FormatRunTime";
 import { FaList } from "react-icons/fa";
 import { GoHeartFill } from "react-icons/go";
 import { FaPlay } from "react-icons/fa";
@@ -9,11 +9,11 @@ import { LuDot } from "react-icons/lu";
 export const PrimaryDetails = ({ movieDetails }) => {
 	const genre = movieDetails.genres;
 
-	const formatRunTime = (minutes) => {
-		const hours = Math.floor(minutes / 60);
-		const remainingMinutes = minutes % 60;
-		return `${hours}h ${remainingMinutes}m`;
-	};
+	// const formatRunTime = (minutes) => {
+	// 	const hours = Math.floor(minutes / 60);
+	// 	const remainingMinutes = minutes % 60;
+	// 	return `${hours}h ${remainingMinutes}m`;
+	// };
 
 	return (
 		<>

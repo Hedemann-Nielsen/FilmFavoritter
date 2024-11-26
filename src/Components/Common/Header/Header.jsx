@@ -5,7 +5,9 @@ import { FaSearch } from "react-icons/fa";
 export const Header = () => {
 	return (
 		<header className="bg-BaggroundPrim flex justify-between items-center px-10 py-9">
-			<h1 className="text-title text-3xl">Film favoritter</h1>
+			<Link to="/">
+				<h1 className="text-title text-3xl">Film favoritter</h1>
+			</Link>
 			<nav className="text-title">
 				<ul className="flex space-x-4 align-middle justify-center">
 					<li>

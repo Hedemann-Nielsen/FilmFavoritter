@@ -36,9 +36,9 @@ export const Genre = () => {
 	if (error) return <p>Error {error.message}</p>;
 
 	return (
-		<section>
+		<section className="relative">
 			<Backdrop title={genreTitle} backdropPath={backdropPath} />
-			<h3 className="text-subtleDark my-3">
+			<h3 className="text-subtleDark mt-12  z-50">
 				{singleGenreTotal?.total_results || 0} film i {genreTitle} genre
 			</h3>
 			<MovieCard

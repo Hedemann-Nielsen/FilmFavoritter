@@ -3,20 +3,19 @@ import { usePopularList } from "../../Hooks/Movies/PopularListData";
 
 export const News = () => {
 	// Using the popularMovies hook to fetch the list of popular movies
-	const { popularMovies, loading, error } = usePopularList();
+	const { popularMovies, loadingPopularMovies, errorPopularMovies } =
+		usePopularList();
 
 	// Display a loading message while loading
-	if (loading) return <p>Loading...</p>;
-
-	// Display an error message if there is an issue fetching data
-	if (error) return <p>Error: {error}</p>;
+	if (loadingPopularMovies) return <p>Loading...</p>;
+	if (errorPopularMovies) return <p>Error: {errorPopularMovies}</p>;
 
 	// Helper function for rendering movie images
 	const renderMovies = (movies, className, sliceRange) => {
-		return movies.slice(...sliceRange).map((movie, index) => (
+		return movies.slice(...sliceRange).map((movie) => (
 			<Link to={`/movie/${movie.id}`}>
 				<img
-					key={index}
+					key={movie.id}
 					src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
 					alt={movie.title}
 					className={`object-cover rounded-lg ${className}`}

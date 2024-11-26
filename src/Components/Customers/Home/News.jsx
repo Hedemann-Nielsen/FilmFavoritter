@@ -1,110 +1,69 @@
+import { Link } from "react-router-dom";
 import { usePopularList } from "../../Hooks/Movies/PopularListData";
 
 export const News = () => {
-	// Using the popularMovies hook to fetch the list of populat movies
-
+	// Using the popularMovies hook to fetch the list of popular movies
 	const { popularMovies, loading, error } = usePopularList();
 
-	// Display a loading message while Loading
-	if (loading) {
-		return <p>Loading...</p>;
-	}
-	// Display a error message if there is an issue from fetching data
+	// Display a loading message while loading
+	if (loading) return <p>Loading...</p>;
 
-	if (error) {
-		return <p>Error: {error}</p>;
-	}
+	// Display an error message if there is an issue fetching data
+	if (error) return <p>Error: {error}</p>;
+
+	// Helper function for rendering movie images
+	const renderMovies = (movies, className, sliceRange) => {
+		return movies.slice(...sliceRange).map((movie, index) => (
+			<Link to={`/movie/${movie.id}`}>
+				<img
+					key={index}
+					src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+					alt={movie.title}
+					className={`object-cover rounded-lg ${className}`}
+				/>
+			</Link>
+		));
+	};
 
 	return (
-		<section className=" bg-BaggroundPrim w-full rounded-lg">
+		<section className="bg-BaggroundPrim w-full rounded-lg">
 			<h1 className="text-center">Nyeste film</h1>
 			<section className="p-10">
-				<div className=" grid grid-cols-2 gap-1.5 lg:grid-cols-5 xl:grid-cols-7">
-					{/* Billeder - Gælder alle størrelser */}
-					{popularMovies &&
-						popularMovies
-							.slice(0, 1)
-							.map((movie, index) => (
-								<img
-									key={index}
-									src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-									alt={movie.title}
-									className=" object-cover rounded-lg  h-[205px]"
-								/>
-							))}
+				<div className="grid grid-cols-2 gap-1.5 lg:grid-cols-5 xl:grid-cols-7">
+					{/* Main large image */}
+					{renderMovies(popularMovies, "h-[205px]", [0, 1])}
+
+					{/* Two small images */}
 					<div className="grid grid-cols-1 grid-rows-2 gap-1.5">
-						{popularMovies &&
-							popularMovies
-								.slice(1, 3)
-								.map((movie, index) => (
-									<img
-										key={index}
-										src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-										alt={movie.title}
-										className=" object-cover rounded-lg h-[100px]"
-									/>
-								))}
+						{renderMovies(popularMovies, "h-[100px]", [1, 3])}
 					</div>
-					{popularMovies &&
-						popularMovies
-							.slice(3, 4)
-							.map((movie, index) => (
-								<img
-									key={index}
-									src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-									alt={movie.title}
-									className="hidden lg:block 2xl:block object-cover rounded-lg  h-[205px]"
-								/>
-							))}
+
+					{/* Additional images for larger screens */}
+					{renderMovies(popularMovies, "hidden lg:block h-[205px]", [3, 4])}
+
 					<div className="grid grid-cols-1 grid-rows-2 gap-1.5">
-						{" "}
-						{popularMovies &&
-							popularMovies
-								.slice(4, 6)
-								.map((movie, index) => (
-									<img
-										key={index}
-										src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-										alt={movie.title}
-										className="hidden lg:block 2xl:block object-cover rounded-lg h-[100px] "
-									/>
-								))}
+						{renderMovies(popularMovies, "hidden lg:block h-[100px]", [4, 6])}
 					</div>
-					{popularMovies &&
-						popularMovies
-							.slice(6, 7)
-							.map((movie, index) => (
-								<img
-									key={index}
-									src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-									alt={movie.title}
-									className="hidden lg:block 2xl:block  object-cover rounded-lg  h-[205px] sm:hidden"
-								/>
-							))}
+
+					{renderMovies(
+						popularMovies,
+						"hidden lg:block h-[205px] sm:hidden",
+						[6, 7]
+					)}
+
 					<div className="grid grid-cols-1 grid-rows-2 gap-1.5">
-						{popularMovies &&
-							popularMovies
-								.slice(7, 9)
-								.map((movie, index) => (
-									<img
-										key={index}
-										src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-										alt={movie.title}
-										className="hidden xl:block object-cover rounded-lg h-[100px] sm:hidden"
-									/>
-								))}
+						{renderMovies(
+							popularMovies,
+							"hidden xl:block h-[100px] sm:hidden",
+							[7, 9]
+						)}
 					</div>
-					{popularMovies &&
-						popularMovies
-							.slice(9, 10)
-							.map((movie, index) => (
-								<img
-									key={index}
-									src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-									alt={movie.title}
-									className="hidden xl:block object-cover rounded-lg  h-[205px] sm:hidden"
-								/>
-							))}
+
+					{renderMovies(
+						popularMovies,
+						"hidden xl:block h-[205px] sm:hidden",
+						[9, 10]
+					)}
 				</div>
 			</section>
 		</section>

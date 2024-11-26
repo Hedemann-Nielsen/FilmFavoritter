@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
-import { useMovieDetails } from "../../Hooks/MovieDetails";
-import { useMovieCredits } from "../../Hooks/MovieCredits";
+import { useMovieDetails } from "../../Hooks/Movies/MovieDetails";
+import { useMovieCredits } from "../../Hooks/Movies/MovieCredits";
 import { Backdrop } from "../../Common/Backdrop";
 import { PrimaryDetails } from "./PrimaryDetails";
 import { CrewSection } from "./CrewSection";

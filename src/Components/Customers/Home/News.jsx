@@ -1,4 +1,4 @@
-import { usePopularList } from "../../Hooks/PopularListData";
+import { usePopularList } from "../../Hooks/Movies/PopularListData";
 
 export const News = () => {
 	// Using the popularMovies hook to fetch the list of populat movies

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useGenreImages } from "../../Hooks/GenreImages";
+import { useGenreImages } from "../../Hooks/Movies/GenreImages";
 
 export const AllGenresSection = () => {
 	const scrollContainerRef = useRef(null);

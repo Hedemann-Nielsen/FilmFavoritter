@@ -4,7 +4,9 @@ import { Layout } from "../Layout/Layout.jsx";
 import { HomePage } from "../../Pages/HomePage.jsx";
 import { GenrePage } from "../../Pages/GenrePage.jsx";
 import { MoviePage } from "../../Pages/MoviePage.jsx";
-import { UserPage } from "../../Pages/UserPage.jsx";
+import { LoginPage } from "../../Pages/LoginPage.jsx";
+import { Approved } from "../Customers/User/Approved.jsx";
+
 import { FallbackPage } from "../../Pages/FallbackPage.jsx";
 
 export const routes = createBrowserRouter([
@@ -28,11 +30,15 @@ export const routes = createBrowserRouter([
 				path: "/movie/:movie_id",
 				element: <MoviePage />,
 			},
-
 			{
-				path: "/user/:user_name",
-				element: <UserPage />,
+				path: "/login",
+				element: <LoginPage />,
 			},
+			{
+				path: "/approved",
+				element: <Approved />,
+			},
+
 			{
 				path: "/fallback",
 				element: <FallbackPage />,

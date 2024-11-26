@@ -8,7 +8,6 @@ export const MovieCard = ({ singleGenreList }) => {
 	const scrollContainerRef = useRef(null);
 	const [scrollBarWidth, setScrollBarWidth] = useState(10);
 	const [scrollPosition, setScrollPosition] = useState(0);
-	console.log(singleGenreList);
 
 	useEffect(() => {
 		if (!scrollContainerRef.current) return;
@@ -39,8 +38,8 @@ export const MovieCard = ({ singleGenreList }) => {
 				<div className="flex xl:hidden w-full">
 					{/* movie items */}
 					{singleGenreList &&
-						singleGenreList.slice(0, 10).map((movie, index) => (
-							<div key={index}>
+						singleGenreList.slice(0, 10).map((movie) => (
+							<div key={movie.id}>
 								<Link to={`/movie/${movie.id}`}>
 									<figure className="relative mx-3 shadow-md shadow-BaggroundPrim min-w-[200px]">
 										<img
@@ -82,11 +81,9 @@ export const MovieCard = ({ singleGenreList }) => {
 			<div className="hidden xl:flex flex-row ">
 				{/* movie items */}
 				{singleGenreList &&
-					singleGenreList.slice(0, 10).map((movie, index) => (
-						<Link to={`/movie/${movie.id}`}>
-							<figure
-								key={index}
-								className="relative mx-3 shadow-xl shadow-BaggroundPrim group">
+					singleGenreList.slice(0, 10).map((movie) => (
+						<Link to={`/movie/${movie.id}`} key={movie.id}>
+							<figure className="relative mx-3 shadow-xl shadow-BaggroundPrim group">
 								<img
 									src={
 										`https://image.tmdb.org/t/p/w500${movie.poster_path}` || {

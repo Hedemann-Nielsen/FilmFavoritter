@@ -1,14 +1,19 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { useAuth } from "../../../Providers/AuthProvider";
 import { useGenreList } from "../../Hooks/movies/GenreMovieList";
-import { useState } from "react";
+import { useSeriesGenreList } from "../../Hooks/Series/SeriesGenreList";
+import { useContext, useState } from "react";
+import { AppContext } from "../../../Providers/AppContext";
 
 export const Header = () => {
 	const { loginData } = useAuth();
 	const { genreList } = useGenreList();
+	const { seriesGenreList } = useSeriesGenreList();
 	const [selectedGenre, setSelectedGenre] = useState();
+	const { setContentType, contentType } = useContext(AppContext);
+	const location = useLocation();
 
 	// Function for handling genre selection
 	const handleGenreChange = (e) => {
@@ -20,39 +25,55 @@ export const Header = () => {
 		// Redirect to the selected genre page
 		window.location.href = `/genre/${selectedGenre}`;
 	}
+	// Determine if we are on a specific path
+	const showButtons =
+		location.pathname === "/" || location.pathname === "/home";
 
 	return (
 		<header className="bg-BaggroundPrim flex justify-between items-center px-10 py-9">
 			<Link to="/">
 				<h1 className="text-title text-3xl">Film favoritter</h1>
 			</Link>
-			<nav className="text-title">
-				<ul className="flex space-x-4 align-middle justify-center">
-					<li>
-						<NavLink className="uppercase">film</NavLink>
-					</li>
-					<li>
-						<NavLink className="uppercase">serier</NavLink>
-					</li>
-				</ul>
-			</nav>
+			{showButtons && (
+				<div className="flex space-x-4 uppercase align-middle justify-center text-title ">
+					<p
+						onClick={() => setContentType("movies")}
+						className={`hover:text-subtleDark ${
+							contentType === "movies"
+								? "border-b-2 border-title transition duration-300 ease-in-out"
+								: ""
+						}`}>
+						film
+					</p>
+					<p
+						onClick={() => setContentType("series")}
+						className={`hover:text-subtleDark ${
+							contentType === "series"
+								? "border-b-2 border-title transition duration-300 ease-in-out"
+								: ""
+						}`}>
+						serier
+					</p>
+				</div>
+			)}
 			<div className="flex space-x-3">
 				<select
 					name="Vælg genre"
 					onChange={handleGenreChange}
 					className="border border-gray-300 text-subtleDark text-base rounded-lg block w-fit px-4 focus:outline-none"
 					defaultValue="">
-					<option value="" disabled selected>
+					<option value="" disabled>
 						Genre
 					</option>
-					{genreList &&
-						genreList.map((genre) => {
+					{(contentType === "movies" ? genreList : seriesGenreList).map(
+						(genre) => {
 							return (
 								<option key={genre.id} value={genre.id}>
 									{genre.name}
 								</option>
 							);
-						})}
+						}
+					)}
 				</select>
 
 				<button className="flex space-x-2">

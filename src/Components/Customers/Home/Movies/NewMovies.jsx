@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { usePopularList } from "../../Hooks/Movies/PopularListData";
+import { usePopularList } from "../../../Hooks/Movies/PopularListData";
 
-export const News = () => {
+export const NewMovies = () => {
 	// Using the popularMovies hook to fetch the list of popular movies
 	const { popularMovies, loadingPopularMovies, errorPopularMovies } =
 		usePopularList();
@@ -13,9 +13,8 @@ export const News = () => {
 	// Helper function for rendering movie images
 	const renderMovies = (movies, className, sliceRange) => {
 		return movies.slice(...sliceRange).map((movie) => (
-			<Link to={`/movie/${movie.id}`}>
+			<Link key={movie.id} to={`/movie/${movie.id}`}>
 				<img
-					key={movie.id}
 					src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
 					alt={movie.title}
 					className={`object-cover rounded-lg ${className}`}

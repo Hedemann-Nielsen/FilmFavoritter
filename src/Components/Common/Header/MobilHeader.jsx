@@ -1,19 +1,49 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useGenreList } from "../../Hooks/movies/GenreMovieList";
 import { Fade as Hamburger } from "hamburger-react";
 import { Link } from "react-router-dom";
+import { useSeriesGenreList } from "../../Hooks/Series/SeriesGenreList";
+import { AppContext } from "../../../Providers/AppContext";
 export const MobilHeader = () => {
 	const [isOpen, setOpen] = useState(false);
 	const { genreList } = useGenreList();
-
+	const { seriesGenreList } = useSeriesGenreList();
+	const { setContentType, contentType } = useContext(AppContext);
 	const handleMenuClick = () => {
 		setOpen(false);
 	};
 
+	// Determine if we are on a specific path
+	const showButtons =
+		location.pathname === "/" || location.pathname === "/home";
+
 	return (
 		<header className="bg-BaggroundPrim flex justify-between items-center px-10 py-9">
-			<h1 className="text-2xl text-title uppercase">Film favoritter</h1>
-
+			<div>
+				<h1 className="text-2xl text-title uppercase">Film favoritter</h1>
+				{showButtons && (
+					<div className="flex space-x-4 uppercase text-title ">
+						<p
+							onClick={() => setContentType("movies")}
+							className={`hover:text-subtleDark ${
+								contentType === "movies"
+									? "border-b-2 border-title transition duration-300 ease-in-out"
+									: ""
+							}`}>
+							film
+						</p>
+						<p
+							onClick={() => setContentType("series")}
+							className={`hover:text-subtleDark ${
+								contentType === "series"
+									? "border-b-2 border-title transition duration-300 ease-in-out"
+									: ""
+							}`}>
+							serier
+						</p>
+					</div>
+				)}
+			</div>
 			<span className="z-50">
 				{/* brugermenu fra react npm pakke */}
 
@@ -35,8 +65,8 @@ export const MobilHeader = () => {
 						direction="right"
 						color="#fff"
 					/>
-					{genreList &&
-						genreList.map((genre) => {
+					{(contentType === "movies" ? genreList : seriesGenreList).map(
+						(genre) => {
 							return (
 								<Link
 									to={`/genre/${genre.id}`}
@@ -46,24 +76,8 @@ export const MobilHeader = () => {
 									{genre.name}
 								</Link>
 							);
-						})}
-					{/* <select
-						name="Vælg genre"
-						onChange={handleGenreChange}
-						className="border border-gray-300 text-subtleDark text-base rounded-lg block w-fit px-4 focus:outline-none"
-						defaultValue="">
-						<option value="" disabled selected>
-							Genre
-						</option>
-						{genreList &&
-							genreList.map((genre) => {
-								return (
-									<option key={genre.id} value={genre.id}>
-										{genre.name}
-									</option>
-								);
-							})}
-					</select> */}
+						}
+					)}
 				</section>
 			</span>
 		</header>

@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useGenreImages } from "../../Hooks/Movies/GenreImages";
+import { useGenreImages } from "../../../Hooks/Movies/GenreImages";
+import { Link } from "react-router-dom";
 
-export const AllGenresSection = () => {
+export const AllSerieseGenres = () => {
 	const scrollContainerRef = useRef(null);
 	const { genreImages, loadingImages, errorImages } = useGenreImages();
 	const [scrollBarWidth, setScrollBarWidth] = useState(10);
@@ -32,29 +33,31 @@ export const AllGenresSection = () => {
 
 	return (
 		<section className="h-full py-11">
-			<h1>Genres</h1>
+			<h1>Alle genre</h1>
 			<div
 				className="scroll-container flex relative w-full overflow-x-auto"
 				ref={scrollContainerRef}>
 				{/* All genres */}
 				{genreImages &&
 					genreImages.map((genre) => (
-						<div
-							key={genre.id}
-							className="relative mx-3 w-[200px] h-[200px] min-w-[200px]">
-							<h3 className="absolute bg-opacity-50 bg-black w-full h-full rounded-full justify-center items-center flex">
-								{genre.name}
-							</h3>
-							{genre.image ? (
-								<img
-									src={genre.image}
-									alt={genre.name}
-									className="w-full h-full object-cover rounded-full"
-								/>
-							) : (
-								<p>No image</p>
-							)}
-						</div>
+						<Link key={genre.id} to={`/genre/${genre.id}`}>
+							<div
+								key={genre.id}
+								className="relative mx-3 w-[200px] h-[200px] min-w-[200px]">
+								<h3 className="absolute bg-opacity-50 bg-black w-full h-full rounded-full justify-center items-center flex">
+									{genre.name}
+								</h3>
+								{genre.image ? (
+									<img
+										src={genre.image}
+										alt={genre.name}
+										className="w-full h-full object-cover rounded-full"
+									/>
+								) : (
+									<p>No image</p>
+								)}
+							</div>
+						</Link>
 					))}
 			</div>
 			{/* Custom scrollbar */}

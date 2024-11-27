@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import { useMovieDetails } from "../../Hooks/Movies/MovieDetails";
 import { useMovieCredits } from "../../Hooks/Movies/MovieCredits";
 import { Backdrop } from "../../Common/Backdrop";
+import { ScrollToTop } from "../../Common/ScrollToTop";
 import { PrimaryDetails } from "./PrimaryDetails";
-import { CrewSection } from "./CrewSection";
-import { Actors } from "./Actors";
+import { CrewSection } from "../../Common/CrewSection";
+import { Actors } from "../../Common/Actors";
 import { Overview } from "./overview";
 import { useUserDetails } from "../../Hooks/User/UserDetails";
 
@@ -45,11 +46,12 @@ export const Movie = () => {
 
 	// Show loading or error messages
 	if (loadingMovieDetails || loadingCredits) return <p>Loading movie...</p>;
-	if (errorMovieDetails) return <p>Error: {errorMovieDetails.message}</p>;
-	if (errorCredits) return <p>Error: {errorCredits.message}</p>;
+	if (errorMovieDetails) return <p>Error: {errorMovieDetails}</p>;
+	if (errorCredits) return <p>Error: {errorCredits}</p>;
 
 	return (
 		<>
+			<ScrollToTop />
 			<Backdrop backdropPath={backdropPath} />
 			<PrimaryDetails movieDetails={movieDetails} userData={userData} />
 			<Overview movieDetails={movieDetails} />

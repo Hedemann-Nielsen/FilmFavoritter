@@ -9,10 +9,11 @@ export const useGenreImages = () => {
 	useEffect(() => {
 		const fetchGenreImages = async () => {
 			const accessToken = import.meta.env.VITE_TMDB_API_READ_ACCESS_TOKEN;
+			const url = import.meta.env.VITE_TMDB_API_URL;
 
 			try {
 				const genreResponse = await axios.get(
-					"https://api.themoviedb.org/3/genre/movie/list?language=en",
+					`${url}/genre/movie/list?language=en`,
 					{
 						headers: {
 							accept: "application/json",
@@ -25,7 +26,7 @@ export const useGenreImages = () => {
 				const images = await Promise.all(
 					genres.map(async (genre) => {
 						const movieResponse = await axios.get(
-							`https://api.themoviedb.org/3/discover/movie?with_genres=${genre.id}`,
+							`${url}/discover/movie?with_genres=${genre.id}`,
 							{
 								headers: {
 									accept: "application/json",
@@ -34,7 +35,8 @@ export const useGenreImages = () => {
 							}
 						);
 						const movies = movieResponse.data.results;
-						const randomIndex = Math.floor(Math.random() * movies.length); // Vælg en tilfældig film
+						//Choose a random movie
+						const randomIndex = Math.floor(Math.random() * movies.length);
 						const movie = movies[randomIndex];
 						return {
 							id: genre.id,

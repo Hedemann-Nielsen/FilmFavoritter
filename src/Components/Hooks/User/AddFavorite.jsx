@@ -10,10 +10,11 @@ export const useAddFavorite = (sessionId, movieId) => {
 		if (!sessionId || !movieId) return;
 
 		const apiKey = import.meta.env.VITE_TMDB_API_READ_ACCESS_TOKEN;
+		const url = import.meta.env.VITE_TMDB_API_URL;
 
 		try {
 			const response = await axios.get(
-				`https://api.themoviedb.org/3/account/${sessionId}/favorite/movies`,
+				`${url}/account/${sessionId}/favorite/movies`,
 				{
 					headers: {
 						Authorization: `Bearer ${apiKey}`,
@@ -35,10 +36,11 @@ export const useAddFavorite = (sessionId, movieId) => {
 	// Handles clicks on like button
 	const handleLikeClick = async (movieId, sessionId) => {
 		const apiKey = import.meta.env.VITE_TMDB_API_READ_ACCESS_TOKEN;
+		const url = import.meta.env.VITE_TMDB_API_URL;
 
 		const options = {
 			method: "POST",
-			url: `https://api.themoviedb.org/3/account/${sessionId}/favorite`,
+			url: `${url}/account/${sessionId}/favorite`,
 			headers: {
 				accept: "application/json",
 				"content-type": "application/json",

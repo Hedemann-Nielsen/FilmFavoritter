@@ -9,9 +9,11 @@ export const useSeriesGenreList = () => {
 	useEffect(() => {
 		const fetchSeriesGenreList = async () => {
 			const accessToken = import.meta.env.VITE_TMDB_API_READ_ACCESS_TOKEN;
+			const url = import.meta.env.VITE_TMDB_API_URL;
+
 			try {
 				const response = await axios.get(
-					"https://api.themoviedb.org/3/genre/tv/list?language=en",
+					`${url}/genre/tv/list?language=en`,
 
 					{
 						headers: {

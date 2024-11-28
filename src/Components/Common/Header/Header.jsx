@@ -76,15 +76,15 @@ export const Header = () => {
 					)}
 				</select>
 
-				<button className="flex space-x-2">
-					<FaUser className=" text-BaggroundPrim" />
-					{/* changes text if logged in */}
-					<Link to="/login">
+				<Link to="/login">
+					<button className="flex space-x-2">
+						<FaUser className=" text-BaggroundPrim" />
+						{/* changes text if logged in */}
 						<p className="text-BaggroundPrim">
 							{loginData ? "Profil" : "Login "}
 						</p>
-					</Link>
-				</button>
+					</button>
+				</Link>
 				<div className="flex w-[144px] bg-[#D9D9D9] rounded-lg  space-x-2 align-middle items-center justify-center text-[#1E1B33]">
 					<FaSearch />
 					<p className="text-BaggroundPrim">søg</p>

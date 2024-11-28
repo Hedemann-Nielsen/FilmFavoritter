@@ -24,7 +24,7 @@ export const ProgressIndicator = ({ index }) => {
 	return (
 		<div className="index-container">
 			<div className="indicator" style={getIndicatorStyle()}></div>
-			<p className="index-text">{percentage.toFixed(0)}%</p>
+			<p className="index-text hidden xl:block">{percentage.toFixed(0)}%</p>
 		</div>
 	);
 };

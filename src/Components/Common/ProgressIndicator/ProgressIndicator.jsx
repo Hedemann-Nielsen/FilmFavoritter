@@ -16,7 +16,7 @@ export const ProgressIndicator = ({ index }) => {
           red 0%,
           yellow ${percentage / 2}%,
           green ${percentage}%,
-          #EAEAEA ${percentage}%
+          #EAEAEA00 ${percentage}%
         ) content-box`,
 		};
 	};

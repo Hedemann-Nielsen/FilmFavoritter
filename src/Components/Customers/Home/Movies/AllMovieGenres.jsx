@@ -8,6 +8,8 @@ export const AllMovieGenres = () => {
 	const [scrollBarWidth, setScrollBarWidth] = useState(10);
 	const [scrollPosition, setScrollPosition] = useState(0);
 
+	// Function to update scrollbar
+
 	useEffect(() => {
 		if (!scrollContainerRef.current) return;
 
@@ -23,7 +25,7 @@ export const AllMovieGenres = () => {
 
 		const container = scrollContainerRef.current;
 		container.addEventListener("scroll", updateScrollBar);
-		// Initial call to set correct sizes
+
 		updateScrollBar();
 		return () => container.removeEventListener("scroll", updateScrollBar);
 	}, [scrollBarWidth]);
@@ -33,7 +35,12 @@ export const AllMovieGenres = () => {
 
 	return (
 		<section className="h-full py-11">
-			<h1>Alle genre</h1>
+			<div className="flex items-baseline mb-3">
+				<h1 className="mb-3">Alle genre</h1>
+				<p className="text-subtleDark ml-3">
+					{genreImages.length} genre i film
+				</p>
+			</div>
 			<div
 				className="scroll-container flex relative w-full overflow-x-auto"
 				ref={scrollContainerRef}>

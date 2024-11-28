@@ -12,14 +12,14 @@ export const MovieGenreSection = ({ genreId, title }) => {
 	if (error) return <p>Error loading movies: {error}</p>;
 
 	return (
-		<section>
-			<div className="flex justify-between pb-2">
+		<section className="my-5">
+			<div className="flex justify-between mb-2">
 				<div className="flex items-baseline mb-3">
 					{/* title for genre */}
 					<h1>{title}</h1>
 					{/* total numer of movies */}
 					<p className="text-subtleDark ml-3">
-						{singleGenreTotal?.total_results || 0} films
+						{singleGenreTotal?.total_results || 0} film
 					</p>
 				</div>
 				{/* button to more movies in genre */}

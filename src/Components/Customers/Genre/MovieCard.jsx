@@ -25,11 +25,9 @@ export const MovieCard = ({ singleGenreList, loadMore, hasMore }) => {
 			<div className="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 w-full">
 				{/* Loop through movie list and display each movie */}
 				{singleGenreList &&
-					singleGenreList.map((movie, index) => (
-						<Link to={`/movie/${movie.id}`}>
-							<figure
-								key={index}
-								className="relative mx-3 my-4 shadow-xl shadow-BaggroundPrim group cursor-pointer">
+					singleGenreList.map((movie) => (
+						<Link key={movie.id} to={`/movie/${movie.id}`}>
+							<figure className="relative mx-3 my-4 shadow-xl shadow-BaggroundPrim group cursor-pointer">
 								<img
 									src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 									alt={movie.title}

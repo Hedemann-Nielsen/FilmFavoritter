@@ -20,7 +20,9 @@ export const MobilHeader = () => {
 	return (
 		<header className="bg-BaggroundPrim flex justify-between items-center px-10 py-9">
 			<div>
-				<h1 className="text-2xl text-title uppercase">Film favoritter</h1>
+				<Link to="/">
+					<h1 className="text-2xl text-title uppercase">Film favoritter</h1>
+				</Link>
 				{showButtons && (
 					<div className="flex space-x-4 uppercase text-title ">
 						<p

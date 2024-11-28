@@ -33,7 +33,7 @@ export const MovieCard = ({ singleGenreList }) => {
 		<>
 			{/* Flex container for tablet/mobile */}
 			<div
-				className="scroll-container scroll-Cardcontainer relative w-full h-[460px] overflow-x-auto "
+				className="scroll-container scroll-Cardcontainer relative w-full h-[460px] overflow-x-auto"
 				ref={scrollContainerRef}>
 				<div className="flex xl:hidden w-full">
 					{/* movie items */}
@@ -82,7 +82,7 @@ export const MovieCard = ({ singleGenreList }) => {
 				{/* movie items */}
 				{singleGenreList &&
 					singleGenreList.slice(0, 10).map((movie) => (
-						<Link to={`/movie/${movie.id}`} key={movie.id}>
+						<Link key={movie.id} to={`/movie/${movie.id}`}>
 							<figure className="relative mx-3 shadow-xl shadow-BaggroundPrim group">
 								<img
 									src={

@@ -11,9 +11,9 @@ export const SeriesGenreSection = ({ genreId, title }) => {
 	if (error) return <p>Error loading series: {error}</p>;
 
 	return (
-		<section>
+		<section className="my-5">
 			<div className="flex justify-between pb-2">
-				<div className="flex items-baseline mb-3">
+				<div className="flex items-baseline mb-2">
 					{/* title for genre */}
 					<h1>{title}</h1>
 					{/* total numer of series */}

@@ -7,10 +7,20 @@ import { GoHeartFill } from "react-icons/go";
 import { LuDot } from "react-icons/lu";
 import { useUserDetails } from "../../Hooks/User/UserDetails";
 import { useAddFavorite } from "../../Hooks/User/AddFavorite";
+import { useYoutubeVideo } from "../../Hooks/Movies/YoutubeMovie";
+import { Modal } from "../../Modal/Modal";
+import "../../Modal/Styles.Modal.sass";
 
 export const PrimaryDetails = ({ movieDetails }) => {
 	const { userData } = useUserDetails();
+	const {
+		youtubeVideo,
+		youtubeVideoKey,
+		loadingYoutubeVideo,
+		errorYoutubeVideo,
+	} = useYoutubeVideo(movieDetails.id);
 	const [sessionId, setSessionId] = useState(null);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const genre = movieDetails.genres;
 	const movieId = movieDetails.id;
 
@@ -22,6 +32,18 @@ export const PrimaryDetails = ({ movieDetails }) => {
 		sessionId,
 		movieId
 	);
+
+	const openModal = () => {
+		setModalIsOpen(true);
+	};
+
+	const closeModal = () => {
+		setModalIsOpen(false);
+	};
+
+	if (loadingYoutubeVideo) return <p>Loading Youtube Video...</p>;
+	if (errorYoutubeVideo)
+		return <p>Error loading youtube video: {errorYoutubeVideo}</p>;
 
 	return (
 		<>
@@ -72,9 +94,29 @@ export const PrimaryDetails = ({ movieDetails }) => {
 							className={`w-6 h-6 ${isLiked ? "text-red-500" : ""}`}
 						/>
 					</span>
-					<button className="bg-hl m-2">
+					<button onClick={openModal} className="bg-hl m-2">
 						<FaPlay /> <p className="text-BaggroundPrim pl-2">Play trailer</p>
 					</button>
+					{/* modal indhold */}
+					<Modal
+						isOpen={modalIsOpen}
+						onRequestClose={closeModal}
+						className="Modal"
+						overlayClassName="Overlay">
+						<div className="modalContent relative w-full h-full">
+							{youtubeVideoKey ? (
+								<iframe
+									id="existing-iframe-example"
+									width="fullscreen"
+									height="fit-content"
+									allowFullScreen
+									className="absolute inset-0 w-full h-5/6 rounded-lg"
+									src={`https://www.youtube.com/embed/${youtubeVideoKey}`}></iframe>
+							) : (
+								<p>No official trailer available</p>
+							)}
+						</div>
+					</Modal>
 				</section>
 			</section>
 			{errorMessage && <p className="text-red-500">{errorMessage}</p>}

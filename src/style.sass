@@ -20,7 +20,7 @@ main
 footer
   margin-top: auto
   z-index: 100
-  background-color: #000
+  background-color: #1E1B33
 
 h1
   font-size: 28px
@@ -54,7 +54,8 @@ button
   border-radius: 8px
 
   &:hover
-    background: linear-gradient(180deg, rgba(255, 200, 55, 1) 0%, rgba(255, 223, 112, 1) 100%)
+    background: linear-gradient(180deg, rgba(255,200,55,1) 0%,rgba(255,200,55,1) 50%, rgba(87,76,41,1) 100%)
+    transform: translateY(2px)
 
   &:active
     transform: translateY(2px)
@@ -65,6 +66,17 @@ button
   border-bottom: 1px solid #1E1B33
 
 
+
+.select.appearance-none::-ms-expand 
+  display: none
+  
+
+/* For Chrome, Safari, Edge, Opera */
+.select.appearance-none 
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  
 
 
 /* hide standard scrollbar */

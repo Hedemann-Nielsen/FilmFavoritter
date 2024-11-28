@@ -9,7 +9,6 @@ export const AllMovieGenres = () => {
 	const [scrollPosition, setScrollPosition] = useState(0);
 
 	// Function to update scrollbar
-
 	useEffect(() => {
 		if (!scrollContainerRef.current) return;
 
@@ -48,7 +47,7 @@ export const AllMovieGenres = () => {
 				{genreImages &&
 					genreImages.map((genre) => (
 						<Link key={genre.id} to={`/genre/${genre.id}`}>
-							<div className="relative mx-3 w-[200px] h-[200px] min-w-[200px]">
+							<div className="relative mx-3 w-[200px] h-[200px] min-w-[200px] transform transition-transform duration-300 ease-in-out hover:translate-y-1">
 								<h3 className="absolute bg-opacity-50 bg-black w-full h-full rounded-full justify-center items-center flex">
 									{genre.name}
 								</h3>

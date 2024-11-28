@@ -11,6 +11,6 @@ export const formatYear = (dateString) => {
 	// Extract day, month and year
 
 	const year = date.getFullYear();
-	// Return in d-m-year format
+	// Return in year format
 	return `${year}`;
 };

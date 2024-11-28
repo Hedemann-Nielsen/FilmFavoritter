@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { MovieCard } from "./MovieCard";
 import { useEffect, useState } from "react";
 import { Backdrop } from "../../Common/Backdrop";
-import { ScrollToTop } from "../../Common/ScrollToTop";
 import { useGenreList } from "../../Hooks/Movies/GenreMovieList";
 import { useMoviesFromGenreList } from "../../Hooks/Movies/MoviesFromGenreList";
 
@@ -37,7 +36,6 @@ export const Genre = () => {
 
 	return (
 		<section className="relative">
-			<ScrollToTop />
 			<Backdrop title={genreTitle} backdropPath={backdropPath} />
 			<h3 className="text-subtleDark mt-12  z-50">
 				{singleGenreTotal?.total_results || 0} film i {genreTitle} genre

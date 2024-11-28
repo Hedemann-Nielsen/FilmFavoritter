@@ -47,21 +47,21 @@ export const AllSerieseGenres = () => {
 				{genreImages &&
 					genreImages.map((genre) => (
 						<Link key={genre.id} to={`/genre/${genre.id}`}>
-							<div
-								key={genre.id}
-								className="relative mx-3 w-[200px] h-[200px] min-w-[200px]">
-								<h3 className="absolute bg-opacity-50 bg-black w-full h-full rounded-full justify-center items-center flex">
-									{genre.name}
-								</h3>
-								{genre.image ? (
-									<img
-										src={genre.image}
-										alt={genre.name}
-										className="w-full h-full object-cover rounded-full"
-									/>
-								) : (
-									<p>No image</p>
-								)}
+							<div className="relative mx-3 w-[200px] h-[200px] min-w-[200px]">
+								<div className="relative mx-3 w-[200px] h-[200px] min-w-[200px] transform transition-transform duration-300 ease-in-out hover:translate-y-1">
+									<h3 className="absolute bg-opacity-50 bg-black w-full h-full rounded-full justify-center items-center flex">
+										{genre.name}
+									</h3>
+									{genre.image ? (
+										<img
+											src={genre.image}
+											alt={genre.name}
+											className="w-full h-full object-cover rounded-full"
+										/>
+									) : (
+										<p>No image</p>
+									)}
+								</div>
 							</div>
 						</Link>
 					))}

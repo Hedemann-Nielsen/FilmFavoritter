@@ -1,12 +1,9 @@
-import React, { useRef } from "react";
 import { formatDateShortMonth } from "../../Utils/FormatDate";
 import { GoHeartFill } from "react-icons/go";
 import { ProgressIndicator } from "../../Common/ProgressIndicator/ProgressIndicator";
 import { Link } from "react-router-dom";
 
 export const SeriesCard = ({ singleGenreList, loadMore, hasMore }) => {
-	console.log(singleGenreList);
-
 	// Handle "Load More" button click event
 	const handleLoadMore = (event) => {
 		event.preventDefault(event);

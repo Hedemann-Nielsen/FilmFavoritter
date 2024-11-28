@@ -8,14 +8,6 @@ export const Footer = () => {
 	const date = new Date();
 	const year = date.getFullYear();
 
-	// Function to handle genre changes
-	const handleGenreChange = (e) => {
-		setSelectedGenre(e.target.value);
-		if (e.target.value) {
-			// Redirect to selected genre pag
-			window.location.href = `/genre/${e.target.value}`;
-		}
-	};
 	// only show buttons on specific pages
 	const showButtons =
 		location.pathname === "/" || location.pathname === "/home";

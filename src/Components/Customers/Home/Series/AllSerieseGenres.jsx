@@ -1,33 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useGenreImages } from "../../../Hooks/Movies/GenreImages";
 import { Link } from "react-router-dom";
+import { CustomScrollBar } from "../../../Common/CustomScrollbar";
 
 export const AllSerieseGenres = () => {
 	const scrollContainerRef = useRef(null);
 	const { genreImages, loadingImages, errorImages } = useGenreImages();
-	const [scrollBarWidth, setScrollBarWidth] = useState(10);
-	const [scrollPosition, setScrollPosition] = useState(0);
-
-	// Function to update scrollbar
-	useEffect(() => {
-		if (!scrollContainerRef.current) return;
-
-		const updateScrollBar = () => {
-			const container = scrollContainerRef.current;
-			const scrollWidth = container.scrollWidth;
-			const clientWidth = container.clientWidth;
-			const scrolledPercentage =
-				container.scrollLeft / (scrollWidth - clientWidth);
-			const newPosition = scrolledPercentage * (100 - scrollBarWidth);
-			setScrollPosition(newPosition);
-		};
-
-		const container = scrollContainerRef.current;
-		container.addEventListener("scroll", updateScrollBar);
-
-		updateScrollBar();
-		return () => container.removeEventListener("scroll", updateScrollBar);
-	}, [scrollBarWidth]);
 
 	if (loadingImages) return <p>Loading genres...</p>;
 	if (errorImages) return <p>Error: {errorImages}</p>;
@@ -66,16 +44,7 @@ export const AllSerieseGenres = () => {
 						</Link>
 					))}
 			</div>
-			{/* Custom scrollbar */}
-			<div className="relative w-full h-4 mt-5 bg-subtleDark rounded-full">
-				<div
-					className="absolute top-0 h-full bg-linkBlue rounded-full progress-bar border-2 border-subtleDark"
-					style={{
-						width: `${scrollBarWidth}%`,
-						left: `${scrollPosition}%`,
-						transition: "left 0.1s",
-					}}></div>
-			</div>
+			<CustomScrollBar scrollContainerRef={scrollContainerRef} />
 		</section>
 	);
 };

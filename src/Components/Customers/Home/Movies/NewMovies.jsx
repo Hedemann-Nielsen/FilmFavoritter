@@ -6,7 +6,6 @@ export const NewMovies = () => {
 	const { popularMovies, loadingPopularMovies, errorPopularMovies } =
 		usePopularList();
 
-	// Display a loading message while loading
 	if (loadingPopularMovies) return <p>Loading...</p>;
 	if (errorPopularMovies) return <p>Error: {errorPopularMovies}</p>;
 

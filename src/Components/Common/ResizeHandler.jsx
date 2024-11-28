@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-// `useResizeHandler` er et React-hook, der holder styr på browserens bredde og opdaterer denne, hver gang vinduesstørrelsen ændres.
-
+// Keeps track of the browser's width and updates it every time the window size changes.
 export const useResizeHandler = () => {
 	const [windowsSize, setWindowSize] = useState(0);
 

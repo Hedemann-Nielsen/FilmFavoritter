@@ -4,6 +4,9 @@ import { Fade as Hamburger } from "hamburger-react";
 import { Link } from "react-router-dom";
 import { useSeriesGenreList } from "../../Hooks/Series/SeriesGenreList";
 import { AppContext } from "../../../Providers/AppContext";
+
+import logo from "../../../assets/Film-favoritter-logo.png";
+
 export const MobilHeader = () => {
 	const [isOpen, setOpen] = useState(false);
 	const { genreList } = useGenreList();
@@ -21,7 +24,7 @@ export const MobilHeader = () => {
 		<header className="bg-BaggroundPrim flex justify-between items-center px-10 py-9">
 			<div>
 				<Link to="/">
-					<h1 className="text-2xl text-title uppercase">Film favoritter</h1>
+					<img src={logo} alt="" className=" rounded-full" />
 				</Link>
 				{showButtons && (
 					<div className="flex space-x-4 uppercase text-title ">

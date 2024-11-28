@@ -7,14 +7,11 @@ export const SeriesCard = ({ singleGenreList, loadMore, hasMore }) => {
 	// Handle "Load More" button click event
 	const handleLoadMore = (event) => {
 		event.preventDefault(event);
-		// Store current scroll position
 		const currentScroll = window.scrollY;
-		// Scroll back to the stored position
 		setTimeout(() => {
 			window.scrollTo(0, currentScroll);
 			// Small delay to allow `loadMore` to fetch new data
 		}, 100);
-		// Trigger the loadMore function
 		loadMore();
 	};
 

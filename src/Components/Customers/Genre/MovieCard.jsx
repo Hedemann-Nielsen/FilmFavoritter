@@ -1,4 +1,3 @@
-import React, { useRef } from "react";
 import { formatDateShortMonth } from "../../Utils/FormatDate";
 import { GoHeartFill } from "react-icons/go";
 import { ProgressIndicator } from "../../Common/ProgressIndicator/ProgressIndicator";
@@ -8,14 +7,11 @@ export const MovieCard = ({ singleGenreList, loadMore, hasMore }) => {
 	// Handle "Load More" button click event
 	const handleLoadMore = (event) => {
 		event.preventDefault(event);
-		// Store current scroll position
 		const currentScroll = window.scrollY;
-		// Scroll back to the stored position
 		setTimeout(() => {
 			window.scrollTo(0, currentScroll);
 			// Small delay to allow `loadMore` to fetch new data
 		}, 100);
-		// Trigger the loadMore function
 		loadMore();
 	};
 
@@ -23,7 +19,6 @@ export const MovieCard = ({ singleGenreList, loadMore, hasMore }) => {
 		<>
 			{/* Grid layout for displaying movies */}
 			<div className="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 w-full">
-				{/* Loop through movie list and display each movie */}
 				{singleGenreList &&
 					singleGenreList.map((movie) => (
 						<Link key={movie.id} to={`/movie/${movie.id}`}>

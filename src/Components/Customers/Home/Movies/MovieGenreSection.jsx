@@ -14,7 +14,6 @@ export const MovieGenreSection = ({ genreId, title }) => {
 		<section className="my-5">
 			<div className="flex justify-between mb-2">
 				<div className="flex items-baseline mb-3">
-					{/* title for genre */}
 					<h1>{title}</h1>
 					{/* total numer of movies */}
 					<p className="text-subtleDark ml-3">

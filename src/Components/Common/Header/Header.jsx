@@ -41,7 +41,6 @@ export const Header = () => {
 		<header className="bg-BaggroundPrim flex justify-between items-center px-10 py-9">
 			<Link to="/" className="flex items-center gap-2">
 				<img src={logo} alt="" className=" rounded-full" />
-				{/* <h2 className="text-title text-3xl">Film favoritter</h2> */}
 			</Link>
 			{showButtons && (
 				<div className="flex space-x-4 uppercase align-middle justify-center text-title">

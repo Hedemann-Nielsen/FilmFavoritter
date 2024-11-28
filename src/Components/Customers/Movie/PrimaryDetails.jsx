@@ -13,12 +13,8 @@ import "../../Modal/Styles.Modal.sass";
 
 export const PrimaryDetails = ({ movieDetails }) => {
 	const { userData } = useUserDetails();
-	const {
-		youtubeVideo,
-		youtubeVideoKey,
-		loadingYoutubeVideo,
-		errorYoutubeVideo,
-	} = useYoutubeVideo(movieDetails.id);
+	const { youtubeVideoKey, loadingYoutubeVideo, errorYoutubeVideo } =
+		useYoutubeVideo(movieDetails.id);
 	const [sessionId, setSessionId] = useState(null);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const genre = movieDetails.genres;
@@ -97,7 +93,7 @@ export const PrimaryDetails = ({ movieDetails }) => {
 					<button onClick={openModal} className="bg-hl m-2">
 						<FaPlay /> <p className="text-BaggroundPrim pl-2">Play trailer</p>
 					</button>
-					{/* modal indhold */}
+					{/* modal content */}
 					<Modal
 						isOpen={modalIsOpen}
 						onRequestClose={closeModal}

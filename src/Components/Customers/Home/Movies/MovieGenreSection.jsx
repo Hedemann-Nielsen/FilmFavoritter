@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { MovieCard } from "../../Common/MovieCard";
-import { ToggleSwitch } from "../../Common/ToggleSwitch";
-import { useMoviesFromGenreList } from "../../hooks/Movies/MoviesFromGenreList";
+import { MovieCard } from "../../../Common/MovieCard";
+import { ToggleSwitch } from "../../../Common/ToggleSwitch";
+import { useMoviesFromGenreList } from "../../../Hooks/movies/MoviesFromGenreList";
 
-export const GenreSection = ({ genreId, title }) => {
+export const MovieGenreSection = ({ genreId, title }) => {
 	// Use movie hook ONLY when genreId is defined
 	const { singleGenreList, singleGenreTotal, loading, error } =
 		useMoviesFromGenreList(genreId || null);
@@ -13,7 +13,6 @@ export const GenreSection = ({ genreId, title }) => {
 
 	return (
 		<section>
-			<ToggleSwitch />
 			<div className="flex justify-between pb-2">
 				<div className="flex items-baseline mb-3">
 					{/* title for genre */}

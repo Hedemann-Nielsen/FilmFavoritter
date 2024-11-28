@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
-export const useMoviesFromGenreList = (genreId) => {
+export const useSeriesFromGenreList = (genreId) => {
 	// States for movie list, total data, loading state, and error handling
 	const [singleGenreList, setSingleGenreList] = useState([]);
 	const [singleGenreTotal, setSingleGenreTotal] = useState(null);
@@ -9,8 +9,8 @@ export const useMoviesFromGenreList = (genreId) => {
 	const [error, setError] = useState(null);
 	const [currentPage, setCurrentPage] = useState(1);
 
-	// Fetch movies for a specific page and genre
-	const fetchMoviesFromGenreList = useCallback(
+	// Fetch series for a specific page and genre
+	const fetchSeriesFromGenreList = useCallback(
 		async (page = 1) => {
 			if (!genreId) return;
 
@@ -18,7 +18,7 @@ export const useMoviesFromGenreList = (genreId) => {
 			setError(null);
 			try {
 				const response = await axios.get(
-					`https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&page=${page}`,
+					`https://api.themoviedb.org/3/discover/tv?with_genres=${genreId}&page=${page}`,
 					{
 						headers: {
 							accept: "application/json",
@@ -35,7 +35,7 @@ export const useMoviesFromGenreList = (genreId) => {
 				);
 				setSingleGenreList((prevMovies) => [...prevMovies, ...filteredMovies]);
 
-				setSingleGenreTotal(response.data);
+				setSingleGenreTotal(response.data.results);
 			} catch (error) {
 				setError(error.message);
 			} finally {
@@ -49,8 +49,8 @@ export const useMoviesFromGenreList = (genreId) => {
 	useEffect(() => {
 		setSingleGenreList([]);
 		setCurrentPage(1);
-		fetchMoviesFromGenreList(1);
-	}, [genreId, fetchMoviesFromGenreList]);
+		fetchSeriesFromGenreList(1);
+	}, [genreId, fetchSeriesFromGenreList]);
 
 	// Load the next page of movies
 	const loadMore = () => {
@@ -60,7 +60,7 @@ export const useMoviesFromGenreList = (genreId) => {
 		) {
 			const nextPage = currentPage + 1;
 			setCurrentPage(nextPage);
-			fetchMoviesFromGenreList(nextPage);
+			fetchSeriesFromGenreList(nextPage);
 		}
 	};
 

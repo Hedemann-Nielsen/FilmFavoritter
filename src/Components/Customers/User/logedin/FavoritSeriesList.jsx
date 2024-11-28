@@ -6,12 +6,8 @@ import { LuDot } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
 export const FavoritSeriesList = ({ accountId }) => {
-	console.log(accountId);
 	const { favoritSeries, loadingFavoritSeries, errorFavoritSeries } =
 		useFavoritSeries(accountId);
-
-	console.log(accountId);
-	console.log(favoritSeries);
 
 	// Loading and error states
 	if (loadingFavoritSeries) return <p>Loading favorit Series...</p>;

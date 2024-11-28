@@ -53,7 +53,6 @@ export const useAddFavorite = (sessionId, movieId) => {
 
 		try {
 			const response = await axios.request(options);
-			console.log("Response from API:", response.data);
 			setIsLiked((prevState) => !prevState);
 		} catch (error) {
 			console.error("Error liking/disliking movie:", error);

@@ -8,6 +8,7 @@ export const useGenreList = () => {
 
 	useEffect(() => {
 		const fetchGenreList = async () => {
+			const accessToken = import.meta.env.VITE_TMDB_API_READ_ACCESS_TOKEN;
 			try {
 				const response = await axios.get(
 					"https://api.themoviedb.org/3/genre/movie/list?language=en",
@@ -15,8 +16,8 @@ export const useGenreList = () => {
 					{
 						headers: {
 							accept: "application/json",
-							Authorization:
-								"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzljNTkwYmU5ZGIzYjhiNDA2NWMzNTk4NWFhYjQ5YiIsIm5iZiI6MTczMjE5MTQxMi4wNDg2MTg2LCJzdWIiOiI2NzNjODZjODc4ZjBjZDQ4OTE3MzliYzciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.RWWRaVJkTDv2ibU3w1dRMtZ52bzV7_VO8iK4STgYP2s",
+
+							Authorization: `Bearer ${accessToken}`,
 						},
 					}
 				);

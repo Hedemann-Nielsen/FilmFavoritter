@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
-import { useGenreList } from "../../Hooks/Movies/GenreMovieList";
-import { useMoviesFromGenreList } from "../../Hooks/Movies/MoviesFromGenreList";
 import { MovieCard } from "./MovieCard";
 import { useEffect, useState } from "react";
 import { Backdrop } from "../../Common/Backdrop";
+import { ScrollToTop } from "../../Common/ScrollToTop";
+import { useGenreList } from "../../Hooks/movies/GenreMovieList";
+import { useMoviesFromGenreList } from "../../Hooks/movies/MoviesFromGenreList";
 
 export const Genre = () => {
 	const { genre_id } = useParams();
@@ -22,7 +23,6 @@ export const Genre = () => {
 	// Find genre title based on genreId
 	const genre = genreList.find((g) => g.id === parseInt(genreId));
 	const genreTitle = genre ? genre.name : "Unknown Genre";
-	console.log(singleGenreList);
 
 	// Find backdrop image from based from first title in the list
 	useEffect(() => {
@@ -37,6 +37,7 @@ export const Genre = () => {
 
 	return (
 		<section className="relative">
+			<ScrollToTop />
 			<Backdrop title={genreTitle} backdropPath={backdropPath} />
 			<h3 className="text-subtleDark mt-12  z-50">
 				{singleGenreTotal?.total_results || 0} film i {genreTitle} genre

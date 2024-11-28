@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../../Providers/AppContext";
-import { useGenreList } from "../../Hooks/movies/GenreMovieList";
+import { useGenreList } from "../../Hooks/Movies/GenreMovieList";
 import { AllMovieGenres } from "./Movies/AllMovieGenres";
 import { MovieGenreSection } from "./Movies/MovieGenreSection";
 import { KeyFeatures } from "./KeyFeatures";

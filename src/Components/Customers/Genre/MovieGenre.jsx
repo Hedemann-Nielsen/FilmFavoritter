@@ -3,8 +3,8 @@ import { MovieCard } from "./MovieCard";
 import { useEffect, useState } from "react";
 import { Backdrop } from "../../Common/Backdrop";
 import { ScrollToTop } from "../../Common/ScrollToTop";
-import { useGenreList } from "../../Hooks/movies/GenreMovieList";
-import { useMoviesFromGenreList } from "../../Hooks/movies/MoviesFromGenreList";
+import { useGenreList } from "../../Hooks/Movies/GenreMovieList";
+import { useMoviesFromGenreList } from "../../Hooks/Movies/MoviesFromGenreList";
 
 export const Genre = () => {
 	const { genre_id } = useParams();

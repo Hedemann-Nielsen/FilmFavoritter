@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useGenreList } from "../../Hooks/movies/GenreMovieList";
+import { useGenreList } from "../../Hooks/Movies/GenreMovieList";
 import { Fade as Hamburger } from "hamburger-react";
 import { Link } from "react-router-dom";
 import { useSeriesGenreList } from "../../Hooks/Series/SeriesGenreList";

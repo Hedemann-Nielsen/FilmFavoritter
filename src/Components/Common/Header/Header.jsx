@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { useAuth } from "../../../Providers/AuthProvider";
-import { useGenreList } from "../../Hooks/movies/GenreMovieList";
+import { useGenreList } from "../../Hooks/Movies/GenreMovieList";
 import { useSeriesGenreList } from "../../Hooks/Series/SeriesGenreList";
 import { useContext, useState } from "react";
 import { AppContext } from "../../../Providers/AppContext";

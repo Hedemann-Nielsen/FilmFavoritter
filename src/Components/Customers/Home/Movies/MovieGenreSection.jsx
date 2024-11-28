@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { MovieCard } from "../../../Common/MovieCard";
-import { ToggleSwitch } from "../../../Common/ToggleSwitch";
-import { useMoviesFromGenreList } from "../../../Hooks/movies/MoviesFromGenreList";
+import { useMoviesFromGenreList } from "../../../Hooks/Movies/MoviesFromGenreList";
 
 export const MovieGenreSection = ({ genreId, title }) => {
 	// Use movie hook ONLY when genreId is defined

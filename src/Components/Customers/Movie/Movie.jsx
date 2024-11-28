@@ -7,9 +7,8 @@ import { ScrollToTop } from "../../Common/ScrollToTop";
 import { PrimaryDetails } from "./PrimaryDetails";
 import { CrewSection } from "../../Common/CrewSection";
 import { Actors } from "../../Common/Actors";
-import { Overview } from "./overview";
 import { useUserDetails } from "../../Hooks/User/UserDetails";
-
+import { Overview } from "./Overview";
 export const Movie = () => {
 	const { movie_id } = useParams();
 	const movieId = movie_id;
